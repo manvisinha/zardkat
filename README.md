@@ -2,6 +2,12 @@
 
 A [hardhat-circom](https://github.com/projectsophon/hardhat-circom) template to generate zero-knowledge circuits, proofs, and solidity verifiers
 
+## Circuit Diagram
+![image](https://github.com/user-attachments/assets/c03f986b-5b36-4293-b426-0097557ec5c0)
+
+
+
+
 ## Quick Start
 Compile the Multiplier2() circuit and verify it against a smart contract verifier
 
@@ -30,12 +36,11 @@ component main = Multiplier2();
 This will generate the **out** file with circuit intermediaries and geneate the **MultiplierVerifier.sol** contract
 
 ### Prove and Deploy
-`npx hardhat run scripts/deploy.ts`
-This script does 4 things  
-1. Deploys the MultiplierVerifier.sol contract
-2. Generates a proof from circuit intermediaries with `generateProof()`
-3. Generates calldata with `generateCallData()`
-4. Calls `verifyProof()` on the verifier contract with calldata
+The script `npx hardhat run scripts/deploy.ts` performs the following tasks:
+1. Deploys the `MultiplierVerifier.sol` contract.
+2. Generates a proof using circuit intermediaries with `generateProof()`.
+3. Creates calldata using `generateCallData()`.
+4. Calls `verifyProof()` on the verifier contract with the generated calldata.
 
 With two commands you can compile a ZKP, generate a proof, deploy a verifier, and verify the proof 🎉
 
@@ -103,3 +108,8 @@ npx hardhat newcircuit --name newcircuit
 **determinism**
 > When you recompile the same circuit using the groth16 protocol, even with no changes, this plugin will apply a new final beacon, changing all the zkey output files. This also causes your Verifier contracts to be updated.
 > For development builds of groth16 circuits, we provide the --deterministic flag in order to use a NON-RANDOM and UNSECURE hardcoded entropy (0x000000 by default) which will allow you to more easily inspect and catch changes in your circuits. You can adjust this default beacon by setting the beacon property on a circuit's config in your hardhat.config.js file.
+
+
+## Author
+Manvi Sinha[@sinhamanvi17@gmail.com]
+
